@@ -19,7 +19,7 @@ variable "machine_os_all" {
   type    = map(any)
   default = {
     rhel    = {
-      family  = "rhel-8"
+      family  = "rhel-9"
       project = "rhel-cloud"
     },
     cent-os = {
