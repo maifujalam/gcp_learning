@@ -1,0 +1,5 @@
+region = "asia-east1"
+zone = "asia-east1-a"
+project = "logical-cubist-348810"
+name = "router-1"
+vpc = "vpc-1"

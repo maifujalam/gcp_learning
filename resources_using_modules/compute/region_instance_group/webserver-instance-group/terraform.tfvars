@@ -1,0 +1,6 @@
+region = "us-east1"
+zone = "us-east1-a"
+project = "logical-cubist-348810"
+instance_template_name = "webserver-instance-template"
+base_instance_name = "webserver"
+name = "webserver-instance-group"

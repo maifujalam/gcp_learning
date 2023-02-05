@@ -1,0 +1,5 @@
+region = "asia-east1"
+zone = "asia-east1-a"
+vpc = "vpc-2"
+name = "subnet-1"
+cidr = "10.10.0.0/16"

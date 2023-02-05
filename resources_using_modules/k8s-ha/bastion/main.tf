@@ -1,0 +1,13 @@
+module "bastion-vm" {
+  source = "/home/alam/PycharmProjects/terraform-learning/GCP/modules/compute/instance"
+  count = 1
+  name         = var.name
+  machine_type = var.machine-type.c2m2
+  machine_os = var.machine_os
+  disk_size = var.disk_size
+  disk_type = var.disk_type.ssd
+  vpc = var.vpc
+  ssh_user = var.ssh_user
+  ssh_public_key_path = var.ssh_public_key_path
+  static_ip = var.static_ip
+}
