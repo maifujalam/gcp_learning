@@ -9,4 +9,5 @@ output "public-ips" {
 }
 output "ssh" {
   value = "ssh -i ~/.ssh/gcp/gcp -o ServerAliveInterval=5 ${var.ssh_user}@${google_compute_instance.vm[0].network_interface[0].access_config[0].nat_ip}"
+  #value = "for k,v in ${google_compute_instance.vm}:k= "
 }

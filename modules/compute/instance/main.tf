@@ -55,6 +55,7 @@ resource "google_compute_instance" "vm" {
   }
   network_interface {
     network    = var.vpc
+    
     access_config {
       network_tier = var.network_tier
       nat_ip       = var.static_ip ? google_compute_address.static-external-ip[count.index].address : null

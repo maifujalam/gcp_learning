@@ -21,6 +21,8 @@ variable "machine-type" {
     "c2m2" = "e2-small"
     "c2m4" = "e2-medium"
     "c2m8" = "e2-standard-2"
+    "C3c4m8" = "c3-highcpu-4"
+    "C3c8m16" = "c3-highcpu-8"
   }
 }
 variable "name" {
@@ -37,7 +39,7 @@ variable "disk_type" {
   }
 }
 variable "machine_os" {
-  default = ""
+  default = "rhel9"
 }
 variable "vpc" {
   default = "default"
