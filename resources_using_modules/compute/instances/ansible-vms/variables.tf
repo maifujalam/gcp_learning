@@ -58,3 +58,6 @@ variable "labels" {
     "default-key":"default-value"
   }
 }
+variable "external_ip" {
+  default = false
+}

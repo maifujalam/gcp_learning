@@ -54,8 +54,11 @@ variable "ssh_public_key_path" {
 variable "ssh_user" {
   description = "ssh user name"
 }
-variable "static_ip" {
+variable "external_ip" {
   default = false
+}
+variable "internal_ip" {
+  default = true
 }
 variable "labels" {
   description = "Map of key value pairs"

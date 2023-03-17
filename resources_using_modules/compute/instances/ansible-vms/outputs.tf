@@ -1,0 +1,14 @@
+output "private_ip" {
+  value = flatten(module.bastion-vm[*].private-ips)
+}
+output "public_ip" {
+  #value = length(module.bastion-vm[*].public-ips) > 0 ? module.bastion-vm[*].public-ips : null
+  value = length(module.bastion-vm[*].public-ips) > 0 ? flatten(module.bastion-vm[*].public-ips): null
+}
+
+output "ssh" {
+  value= length(module.bastion-vm[*].public-ips) > 0 ?  [ for i in flatten(module.bastion-vm[*].public-ips): "ssh -i ~/.ssh/gcp/gcp -o ServerAliveInterval=5 ${var.ssh_user}@${i}"] : null
+}
+#output "ssh2" {
+#  value= "ssh -i ~/.ssh/gcp/gcp -o ServerAliveInterval=5 alam@${(module.bastion-vm[0].private-ips)}"
+#}

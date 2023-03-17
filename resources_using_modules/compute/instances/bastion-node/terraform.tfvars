@@ -1,8 +1,9 @@
 project_id="alam-project1"
 machine_os = "rhel"
-name = "ansible-node"
+name = "bastion-node"
 ssh_public_key_path = "~/.ssh/gcp/gcp.pub"
 ssh_user = "alam"
 disk_size = "20"
 region = "us-central1"
 zone = "us-central1-c"
+vm_count = 1

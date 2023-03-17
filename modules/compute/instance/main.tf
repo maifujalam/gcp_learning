@@ -1,10 +1,10 @@
-resource "google_compute_address" "static-external-ip" {
-  count = var.static_ip ? var.vm_count : 0
-  name  = "static-external-ip-${count.index}"
+resource "google_compute_address" "external-ip" {
+  count = var.external_ip ? var.vm_count : 0
+  name  = "external-ip-${count.index}"
 }
-resource "google_compute_address" "static-internal-ip" {
-  count        = var.static_ip ? var.vm_count : 0
-  name         = "static-internal-ip-${count.index}"
+resource "google_compute_address" "internal-ip" {
+  count        = var.internal_ip ? var.vm_count : 0
+  name         = "internal-ip-${count.index}"
   address_type = "INTERNAL"
 }
 resource "google_compute_firewall" "allow-startup-script" {
@@ -55,12 +55,11 @@ resource "google_compute_instance" "vm" {
   }
   network_interface {
     network    = var.vpc
-    
     access_config {
       network_tier = var.network_tier
-      nat_ip       = var.static_ip ? google_compute_address.static-external-ip[count.index].address : null
+      nat_ip       = var.external_ip ? google_compute_address.external-ip[count.index].address : null
     }
-    network_ip = var.static_ip ? google_compute_address.static-internal-ip[count.index].address : null
+    network_ip = var.internal_ip ? google_compute_address.internal-ip[count.index].address : null
   }
   allow_stopping_for_update = true
 }

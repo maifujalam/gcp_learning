@@ -7,4 +7,5 @@ module "ansible-nodes" {
   ssh_user = var.ssh_user
   disk_type = var.disk_type.ssd
   disk_size = var.disk_size
+  count = var.vm_count
 }

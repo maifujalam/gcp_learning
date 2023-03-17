@@ -9,6 +9,6 @@ module "bastion-vm" {
   vpc = var.vpc
   ssh_user = var.ssh_user
   ssh_public_key_path = var.ssh_public_key_path
-  static_ip = var.static_ip
+  external_ip = var.external_ip
   labels = var.labels
 }
