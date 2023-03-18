@@ -67,7 +67,3 @@ variable "labels" {
     "default-key":"default-value"
   }
 }
-variable "private_vm" {
-  description = "Specify whether this VM is privately accessed or not"
-  default = true
-}

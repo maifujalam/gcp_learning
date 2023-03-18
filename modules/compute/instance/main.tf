@@ -12,7 +12,7 @@ resource "google_compute_firewall" "allow-startup-script" {
   network = var.vpc
   allow {
     protocol = "tcp"
-    ports = [80,443,8080]
+    ports    = [80, 443, 8080]
   }
   source_ranges = ["0.0.0.0/0"]
 }
@@ -41,9 +41,9 @@ resource "google_compute_instance" "vm" {
     "http-server",
     "https-server"
   ]
-  labels = var.labels
+  labels   = var.labels
   metadata = {
-    ssh-keys = "${var.ssh_user}:${file(var.ssh_public_key_path)}"
+    ssh-keys       = "${var.ssh_user}:${file(var.ssh_public_key_path)}"
     startup-script = var.machine_os == "ubuntu" ? local.ubuntu_script : local.rhel_script
   }
   boot_disk {
@@ -54,10 +54,14 @@ resource "google_compute_instance" "vm" {
     }
   }
   network_interface {
-    network    = var.vpc
-    access_config {
-      network_tier = var.network_tier
-      nat_ip       = var.external_ip ? google_compute_address.external-ip[count.index].address : null
+    network = var.vpc
+
+    dynamic "access_config" {
+      for_each = var.external_ip ? [" "] : []
+      content {
+          network_tier = var.network_tier
+          nat_ip       = google_compute_address.external-ip[count.index].address
+      }
     }
     network_ip = var.internal_ip ? google_compute_address.internal-ip[count.index].address : null
   }

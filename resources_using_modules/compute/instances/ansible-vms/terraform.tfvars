@@ -6,7 +6,7 @@ disk_size = 20
 machine_os = "rhel"
 vpc = "default"
 ssh_user = "alam"
-external_ip = true
+external_ip = false
 vm_count = 3
 labels = {
   "webserver":""

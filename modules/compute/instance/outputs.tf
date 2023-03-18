@@ -13,3 +13,6 @@ output "public-ips" {
 #  value = length(google_compute_instance.vm[*])>0? "ssh -i ~/.ssh/gcp/gcp -o ServerAliveInterval=5 ${var.ssh_user}@${google_compute_instance.vm[0].network_interface[0].access_config[0].nat_ip}" : null
 #
 #}
+output "names" {
+  value = flatten(google_compute_instance.vm[*].name)
+}
