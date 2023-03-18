@@ -1,5 +1,5 @@
 output "private_ip" {
-  value = [zipmap(flatten(module.bastion-vm[*].names),flatten(module.bastion-vm[*].private-ips))]
+  value = zipmap(flatten(module.bastion-vm[*].names),flatten(module.bastion-vm[*].private-ips))
 }
 output "public_ip" {
   value = var.external_ip ? zipmap(flatten(module.bastion-vm[*].names),flatten(module.bastion-vm[*].public-ips)): null

@@ -1,14 +1,14 @@
 resource "google_compute_address" "external-ip" {
   count = var.external_ip ? var.vm_count : 0
-  name  = "external-ip-${count.index}"
+  name  = "${var.name}-external-ip-${count.index}"
 }
 resource "google_compute_address" "internal-ip" {
   count        = var.internal_ip ? var.vm_count : 0
-  name         = "internal-ip-${count.index}"
+  name         = "${var.name}-internal-ip-${count.index}"
   address_type = "INTERNAL"
 }
 resource "google_compute_firewall" "allow-startup-script" {
-  name    = "allow-startup-script"
+  name    = "${var.name}-allow-startup-script"
   network = var.vpc
   allow {
     protocol = "tcp"

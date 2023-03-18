@@ -5,5 +5,6 @@ ssh_public_key_path = "~/.ssh/gcp/gcp.pub"
 ssh_user = "alam"
 disk_size = "20"
 region = "us-central1"
-zone = "us-central1-c"
+zone = "us-central1-b"
 vm_count = 1
+external_ip = true

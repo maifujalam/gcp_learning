@@ -1,4 +1,4 @@
-module "ansible-nodes" {
+module "bastion-vm" {
   source = "../../../../modules/compute/instance"
   machine_os = var.machine_os
   machine_type = var.machine-type.C3c4m8
@@ -8,4 +8,5 @@ module "ansible-nodes" {
   disk_type = var.disk_type.ssd
   disk_size = var.disk_size
   count = var.vm_count
+  external_ip = var.external_ip
 }
